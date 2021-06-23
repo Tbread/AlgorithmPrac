@@ -23,3 +23,16 @@
 #     apart[i][0] = 1
 #     print(apart)
 #
+def first_floor(num,num2): #num = 층 num2 =호
+    if num == 1:
+        return num2
+    return first_floor(num-1,num2)
+
+def nth_floor(num,num2):
+    if num2 == 1:
+        return first_floor(num)
+    if num == 1:
+        return 1
+    return first_floor(num) + nth_floor(num-1,num2)
+
+print(first_floor(2,3))
