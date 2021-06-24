@@ -36,3 +36,11 @@ def nth_floor(num,num2):
     return first_floor(num) + nth_floor(num-1,num2)
 
 print(first_floor(2,3))
+
+
+def func123(floor,ho):
+    if floor = 1:
+        return ho
+    if ho = 1:
+        return 1
+    return func123(floor-1,ho)
