@@ -1,48 +1,26 @@
-import math
+import math, sys, itertools
 
+comb = itertools.combinations
 sqrt = math.sqrt
-arr = []
-
-
-def chk(get):
-    if get == 1:
-        return False
-    for i in range(2, int(sqrt(get)) + 1):
-        if get % i == 0:
-            return False
-    return True
-
-
-def filt(get):
-    global n
-    if get < n//2:
-        return True
-    else:
-        return False
-
-
+primes = [1]
 for i in range(2, 10000):
-    if chk(i) == True:
-        arr.append(i)
-
-repeat = int(input())
-for _ in range(repeat):
-    n = int(input())
-    arr2 = list(filter(filt, arr))
-    li = []
-    for i in range(len(arr2)-1, -1, -1):
-        for j in range(len(arr2)-1,-1,-1):
-            if arr2[i]+arr2[j] == n:
-                li2 = []
-                li2.append(arr2[i])
-                li2.append(arr2[j])
-                li.append(li2)
-        if i < len(arr2)/2:
+    flag = 0
+    for j in range(2, int(sqrt(i)) + 1):
+        if i % j == 0:
+            flag = 1
             break
-    past_dif = abs(li[0][0] - li[0][1])
-    for i in range(len(li)):
-        dif = abs(li[i][0]-li[i][1])
-        if dif <= past_dif:
-            c = i
-            past_dif = dif
-    print(*li[c])
+    if flag == 0:
+        primes.append(i)
+rp = int(sys.stdin.readline())
+for _ in range(rp):
+    answers = []
+    dif = []
+    n = int(sys.stdin.readline())
+    a, b = n // 2, n // 2
+    while True:
+        if a in primes and b in primes:
+            print(a, b)
+            break
+        else:
+            a -= 1
+            b += 1
