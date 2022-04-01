@@ -1,0 +1,7 @@
+userinput = input()
+splitinput = userinput.split(' ')
+print(int(splitinput[0])+int(splitinput[1]))
+print(int(splitinput[0])-int(splitinput[1]))
+print(int(splitinput[0])*int(splitinput[1]))
+print(int(int(splitinput[0])/int(splitinput[1])))
+print(int(splitinput[0])%int(splitinput[1]))
