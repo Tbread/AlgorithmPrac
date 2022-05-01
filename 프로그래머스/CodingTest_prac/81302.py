@@ -10,7 +10,7 @@ def solution(places):
             for x in range(5):
                 if [x,y] in checked:
                     continue
-                else:
+                # else:
 
 
 
