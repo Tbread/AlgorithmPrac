@@ -62,14 +62,8 @@ def solution(grid, k):
         temp_arr = temp_arr[1:]
         rest = 0
         flag = 0
-        for m in range(len(temp_arr)):
-            flag += len(temp_arr[m])+1
-            if flag > k:
-                rest += 1
-                flag = len(temp_arr[m])
-                print(flag)
-        rest_arr.append(rest)
-    return min(rest_arr)
+        while True:
+            sliced = temp_arr[:k-1]
 
 
 solution(
