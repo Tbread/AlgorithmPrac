@@ -81,16 +81,84 @@
 
 def solution(info, query):
     answer = []
-    info_dict = {'java':[],'cpp':[],'python':[],'backend':[],'frontend':[],'junior':[],'senior':[],'chicken':[],'pizza':[]}
+    info_dict = {'java': [], 'cpp': [], 'python': [], 'backend': [], 'frontend': [], 'junior': [], 'senior': [],
+                 'chicken': [], 'pizza': [], 'score': []}
     for i in range(len(info)):
         if 'java' in info[i]:
             info_dict['java'].append(i)
         elif 'cpp' in info[i]:
             info_dict['cpp'].append(i)
         elif 'python' in info[i]:
-            info_dict['java'].append(i)
+            info_dict['python'].append(i)
         if 'backend' in info[i]:
-            info_dict
+            info_dict['backend'].append(i)
+        else:
+            info_dict['frontend'].append(i)
+        if 'junior' in info[i]:
+            info_dict['junior'].append(i)
+        else:
+            info_dict['senior'].append(i)
+        if 'chicken' in info[i]:
+            info_dict['chicken'].append(i)
+        else:
+            info_dict['pizza'].append(i)
+        info_dict['score'].append([int(info[i].split(' ')[4]), i])
+    start = 0
+    for q in query:
+        q = q.replace(' and ', ' ').split(' ')
+        # elif min >= q[4]:
+        #     start = 0
+        # else:
+        #     start = len(info_dict['score'])//2
+        #     if info_dict['score'][start][0] < q[4]:
+        #         while info_dict['score'][start][0] < q[4]:
+        #             start += 1
+        #     else:
+        #         while info_dict['score'][start][0] >= q[4]:
+        #             start -= 1
+        #         start += 1
+        con1 = []
+        con2 = []
+        con3 = []
+        con4 = []
+        if q[0] == 'java':
+            con1 = info_dict['java']
+        elif q[0] == 'python':
+            con1 = info_dict['python']
+        elif q[0] == 'cpp':
+            con1 = info_dict['cpp']
+        else:
+            con1 = info_dict['java'] + info_dict['python'] + info_dict['cpp']
+        if q[1] == 'backend':
+            con2 = info_dict['backend']
+        elif q[1] == 'frontend':
+            con2 = info_dict['frontend']
+        else:
+            con2 = info_dict['backend'] + info_dict['frontend']
+        if q[2] == 'junior':
+            con3 = info_dict['junior']
+        elif q[2] == 'senior':
+            con3 = info_dict['senior']
+        else:
+            con3 = info_dict['junior'] + info_dict['senior']
+        if q[3] == 'pizza':
+            con4 = info_dict['pizza']
+        elif q[3] == 'chicken':
+            con4 = info_dict['chicken']
+        else:
+            con4 = info_dict['pizza'] + info_dict['chicken']
+        con1, con2, con3, con4 = set(con1), set(con2), set(con3), set(con4)
+        fit = list(con1 & con2 & con3 & con4)
+        if not fit:
+            answer.append(0)
+            continue
+        temp = 0
+        for i in fit:
+            if info_dict['score'][i][0] >= int(q[4]):
+                temp += 1
+        answer.append(temp)
+    return answer
+
 
 solution(["java backend junior pizza 150", "python frontend senior chicken 210", "python frontend senior chicken 150",
           "cpp backend senior pizza 260", "java backend junior chicken 80", "python backend senior chicken 50"],
