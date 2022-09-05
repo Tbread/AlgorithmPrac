@@ -4,6 +4,7 @@ import re,copy
 def counting_all(os, ns):
     arr = []
     signs = [os,ns]
+    arr.append(multiply(plus(minus(copy.deepcopy(signs))))[1][0])
     arr.append(multiply(minus(plus(copy.deepcopy(signs))))[1][0])
     arr.append(plus(multiply(minus(copy.deepcopy(signs))))[1][0])
     arr.append(plus(minus(multiply(copy.deepcopy(signs))))[1][0])
