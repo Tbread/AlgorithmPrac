@@ -24,23 +24,23 @@
 #     print(answer)
 #     return answer
 
-def solution(N, coffee_times):
-    answer = []
-    num = N + 2
-    while True:
-        arr = coffee_times[:N + 1]
-        for i in range(len(arr)):
-            arr[i] -= 1
-        try:
-            answer.append(arr.index(0))
-            arr.append(coffee_times[num])
-            num += 1
-        except:
-            pass
-        for i in range(len(arr)):
-            if arr[i] > 0:
-                continue
-            flag
-        if flag =
-
-solution(3, [4, 2, 2, 5, 3])
+# def solution(N, coffee_times):
+#     answer = []
+#     num = N + 2
+#     while True:
+#         arr = coffee_times[:N + 1]
+#         for i in range(len(arr)):
+#             arr[i] -= 1
+#         try:
+#             answer.append(arr.index(0))
+#             arr.append(coffee_times[num])
+#             num += 1
+#         except:
+#             pass
+#         for i in range(len(arr)):
+#             if arr[i] > 0:
+#                 continue
+#             flag
+#         if flag =
+#
+# solution(3, [4, 2, 2, 5, 3])
